@@ -31,7 +31,7 @@ const TabNavigator = () => {
                 name="Home"
                 component={HomeScreen}
                 options={{
-                    tabBarIcon: ({focused, color, size }) => (
+                    tabBarIcon: ({focused, size }) => (
                         <CustomIcon name="home" color={focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex} size={size} />
                     ),
                 }}
@@ -40,7 +40,7 @@ const TabNavigator = () => {
                 name="Cart"
                 component={CartScreen}
                 options={{
-                    tabBarIcon: ({focused, color, size }) => (
+                    tabBarIcon: ({focused, size }) => (
                         <CustomIcon name="cart" color={focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex} size={size} />
                     ),
                 }}
@@ -49,7 +49,7 @@ const TabNavigator = () => {
                 name='Favorite'
                 component={FavoriteScreen}
                 options={{
-                    tabBarIcon: ({focused, color, size }) => (
+                    tabBarIcon: ({focused, size }) => (
                         <CustomIcon name="like" color={focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex} size={size} />
                     ),
                 }}
@@ -58,7 +58,7 @@ const TabNavigator = () => {
                 name="History"
                 component={OrderHistoryScreen}
                 options={{
-                    tabBarIcon: ({focused, color, size }) => (
+                    tabBarIcon: ({focused, size }) => (
                         <CustomIcon name="bell" color={focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex} size={size} />
                     ),
                 }}
