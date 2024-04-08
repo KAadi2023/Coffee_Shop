@@ -9,7 +9,7 @@ import CoffeeCard from '../components/CoffeeCard'
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < data?.length; i++) {
     if (temp[data[i].name] === undefined) {
       temp[data[i].name] = 1;
     }

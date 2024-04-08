@@ -19,11 +19,17 @@ const DetailsScreen = ({ navigation, route }: any) => {
   const removeFromFavoriteList = useStore((state: any) => state.removeFromFavoriteList)
 
   const addToCart = useStore((state: any) => state.addToCart)
+
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice)
 
   const ToggleFavourite = (favourite: boolean, type: string, id: string) => {
     favourite ? removeFromFavoriteList(type, id) : addToFavoriteList(type, id)
   }
+
+  console.log("ItemOfIndex>>>>>", ItemOfIndex)
+  console.log("type of addToCart", typeof addToCart)
+  console.log("type of calculateCartPrice", typeof calculateCartPrice)
+  console.log("type of removeFromFavoriteList", typeof removeFromFavoriteList)
 
   const AddToCartHandler = ({
     id,
@@ -111,17 +117,19 @@ const DetailsScreen = ({ navigation, route }: any) => {
               ))
             }
           </View>
-          <PaymentFooter price={price} buttonTitle='Add to Cart' buttonPressHandler={() =>
-                AddToCartHandler({
-                  id: ItemOfIndex.id,
-                  index: ItemOfIndex.index,
-                  name: ItemOfIndex.name,
-                  roasted: ItemOfIndex.roasted,
-                  imagelink_square: ItemOfIndex.imagelink_square,
-                  special_ingredient: ItemOfIndex.special_ingredient,
-                  type: ItemOfIndex.type,
-                  price: price
-                })}
+          <PaymentFooter price={price} buttonTitle='Add to Cart' buttonPressHandler={() => {
+            AddToCartHandler({
+              id: ItemOfIndex.id,
+              index: ItemOfIndex.index,
+              name: ItemOfIndex.name,
+              roasted: ItemOfIndex.roasted,
+              imagelink_square: ItemOfIndex.imagelink_square,
+              special_ingredient: ItemOfIndex.special_ingredient,
+              type: ItemOfIndex.type,
+              price: price
+            })
+          }
+          }
           />
         </View>
       </ScrollView>

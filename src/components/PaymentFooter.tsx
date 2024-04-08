@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         borderRadius: BORDERRADIUS.radius_25,
         justifyContent: 'center',
         alignItems: 'center',
-        height: SPACING.space_36 * 2,
+        height: SPACING.space_30 * 2,
     },
     ButtonText: {
         fontFamily: FONTFAMILY.poppins_semibold,

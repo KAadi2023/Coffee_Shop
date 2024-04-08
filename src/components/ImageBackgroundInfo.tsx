@@ -36,7 +36,6 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
     BackHandler,
     ToggleFavourite,
 }) => {
-    console.log('image Links', imagelink_square);
 
     return (
         <View>
