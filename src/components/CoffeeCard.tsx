@@ -53,10 +53,22 @@ const CoffeeCard: React.FC<CoffeCardProps> = ({
             <Text style={styles.CardSubTitle}>{special_ingredient}</Text>
             <View style={styles.CardFooterRow}>
                 <Text style={styles.CardPriceCurrency}>
-                   $ <Text style={styles.CardPrice}>{price.price}</Text>
+                    $ <Text style={styles.CardPrice}>{price.price}</Text>
                 </Text>
-                <TouchableOpacity onPress={() => {}}>
-                    <BGIcon 
+                <TouchableOpacity onPress={() => {
+                    buttonPressHandler({
+                        id,
+                        name,
+                        index,
+                        type,
+                        roasted,
+                        imagelink_square,
+                        special_ingredient,
+                        average_rating,
+                        prices: [{...price, quantity: 1}]
+                    })
+                }}>
+                    <BGIcon
                         color={COLORS.primaryWhiteHex}
                         name='add'
                         BGColor={COLORS.primaryOrangeHex}
@@ -84,7 +96,7 @@ const styles = StyleSheet.create({
     },
     CardRatingContainer: {
         flexDirection: 'row',
-        justifyContent:'center',
+        justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: COLORS.primaryBlackRGBA,
         gap: SPACING.space_10,
@@ -112,7 +124,7 @@ const styles = StyleSheet.create({
     },
     CardFooterRow: {
         flexDirection: 'row',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginTop: SPACING.space_15,
     },

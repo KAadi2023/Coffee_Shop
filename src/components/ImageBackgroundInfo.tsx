@@ -7,7 +7,7 @@ import CustomIcon from './CustomIcon';
 
 interface ImageBackgroundInfoProps {
     EnableBackHandler: boolean;
-    imagelink_square: ImageProps;
+    imagelink_portrait: ImageProps;
     type: string;
     id: string;
     favourite: boolean;
@@ -23,7 +23,7 @@ interface ImageBackgroundInfoProps {
 
 const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
     EnableBackHandler,
-    imagelink_square,
+    imagelink_portrait,
     type,
     id,
     favourite,
@@ -39,7 +39,7 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
 
     return (
         <View>
-            <ImageBackground source={imagelink_square} style={styles.ItemBackgroundImage}>
+            <ImageBackground source={imagelink_portrait} style={styles.ItemBackgroundImage}>
                 {
                     EnableBackHandler ?
                         (

@@ -26,11 +26,6 @@ const DetailsScreen = ({ navigation, route }: any) => {
     favourite ? removeFromFavoriteList(type, id) : addToFavoriteList(type, id)
   }
 
-  console.log("ItemOfIndex>>>>>", ItemOfIndex)
-  console.log("type of addToCart", typeof addToCart)
-  console.log("type of calculateCartPrice", typeof calculateCartPrice)
-  console.log("type of removeFromFavoriteList", typeof removeFromFavoriteList)
-
   const AddToCartHandler = ({
     id,
     index,
@@ -65,7 +60,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
       >
         <ImageBackgroundInfo
           EnableBackHandler={true}
-          imagelink_square={ItemOfIndex.imagelink_square}
+          imagelink_portrait={ItemOfIndex.imagelink_portrait}
           type={ItemOfIndex.type}
           id={ItemOfIndex.id}
           favourite={ItemOfIndex.favourite}

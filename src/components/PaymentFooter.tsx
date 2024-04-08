@@ -61,12 +61,11 @@ const styles = StyleSheet.create({
     },
     Price: {
         color: COLORS.primaryWhiteHex,
-        alignItems: 'center'
     },
     PayButton: {
         flex: 1,
         backgroundColor: COLORS.primaryOrangeHex,
-        borderRadius: BORDERRADIUS.radius_25,
+        borderRadius: BORDERRADIUS.radius_20,
         justifyContent: 'center',
         alignItems: 'center',
         height: SPACING.space_30 * 2,
