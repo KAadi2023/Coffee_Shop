@@ -7,7 +7,6 @@ import HeaderBar from '../components/HeaderBar'
 import EmptyListAnimation from '../components/EmptyListAnimation'
 import PaymentFooter from '../components/PaymentFooter'
 import CartItem from '../components/CartItem'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const CartScreen = ({ navigation, route }: any) => {
   const CartList = useStore((state: any) => state.CartList)
@@ -17,10 +16,19 @@ const CartScreen = ({ navigation, route }: any) => {
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice)
 
   const tabBarHeight = useBottomTabBarHeight();
-  console.log("CartList:", CartList.length)
 
   const buttonPressHandler = () => {
-    navigation.push('Payment')
+    navigation.push('Payment', { amount: CartPrice })
+  }
+
+  const incrementCartItemQuantityHandler = (id: string, size: string) => {
+    incrementCartItemQuantity(id, size);
+    calculateCartPrice();
+  }
+
+  const decrementCartItemQuantityHandler = (id: string, size: string) => {
+    decrementCartItemQuantity(id, size);
+    calculateCartPrice();
   }
 
   return (
@@ -43,7 +51,13 @@ const CartScreen = ({ navigation, route }: any) => {
                   {
                     CartList.map((data: any) => (
                       <TouchableOpacity
-                        onPress={() => { }}
+                        onPress={() => {
+                          navigation.push("Details", {
+                            id: data.id,
+                            index: data.index,
+                            type: data.type,
+                          })
+                        }}
                         key={data.id}
                       >
                         <CartItem
@@ -54,8 +68,8 @@ const CartScreen = ({ navigation, route }: any) => {
                           roasted={data.roasted}
                           prices={data.prices}
                           type={data.type}
-                          incrementCartitemQuantityHandler={() => { }}
-                          decrementCartitemQuantityHandler={() => { }}
+                          incrementCartItemQuantityHandler={incrementCartItemQuantityHandler}
+                          decrementCartItemQuantityHandler={decrementCartItemQuantityHandler}
                         />
                       </TouchableOpacity>
                     ))
@@ -64,17 +78,19 @@ const CartScreen = ({ navigation, route }: any) => {
               )
             }
           </View>
-          {
-            CartList.length != 0 ?
-                <PaymentFooter
-                  buttonTitle='Pay'
-                  price={{ price: CartPrice, currency: '$' }}
-                  buttonPressHandler={buttonPressHandler}
-                />
-              : <></>
-          }
         </View>
       </ScrollView>
+      <View style={{marginBottom: tabBarHeight}}>
+        {
+          CartList.length != 0 ?
+            <PaymentFooter
+              buttonTitle='Pay'
+              price={{ price: CartPrice, currency: '$' }}
+              buttonPressHandler={buttonPressHandler}
+            />
+            : <></>
+        }
+      </View>
     </View>
   )
 }

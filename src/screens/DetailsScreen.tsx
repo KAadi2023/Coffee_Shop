@@ -112,22 +112,22 @@ const DetailsScreen = ({ navigation, route }: any) => {
               ))
             }
           </View>
-          <PaymentFooter price={price} buttonTitle='Add to Cart' buttonPressHandler={() => {
-            AddToCartHandler({
-              id: ItemOfIndex.id,
-              index: ItemOfIndex.index,
-              name: ItemOfIndex.name,
-              roasted: ItemOfIndex.roasted,
-              imagelink_square: ItemOfIndex.imagelink_square,
-              special_ingredient: ItemOfIndex.special_ingredient,
-              type: ItemOfIndex.type,
-              price: price
-            })
-          }
-          }
-          />
         </View>
       </ScrollView>
+      <PaymentFooter price={price} buttonTitle='Add to Cart' buttonPressHandler={() => {
+        AddToCartHandler({
+          id: ItemOfIndex.id,
+          index: ItemOfIndex.index,
+          name: ItemOfIndex.name,
+          roasted: ItemOfIndex.roasted,
+          imagelink_square: ItemOfIndex.imagelink_square,
+          special_ingredient: ItemOfIndex.special_ingredient,
+          type: ItemOfIndex.type,
+          price: price
+        })
+      }
+      }
+      />
     </View>
   )
 }

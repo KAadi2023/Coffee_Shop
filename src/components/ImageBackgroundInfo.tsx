@@ -17,7 +17,7 @@ interface ImageBackgroundInfoProps {
     average_rating: number;
     ratings_count: string;
     roasted: string;
-    BackHandler: any;
+    BackHandler?: any;
     ToggleFavourite: any;
 }
 
