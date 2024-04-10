@@ -35,6 +35,7 @@ const CartScreen = ({ navigation, route }: any) => {
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
 
+      <HeaderBar title='Cart' />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.ScrollViewFlex} >
@@ -44,7 +45,7 @@ const CartScreen = ({ navigation, route }: any) => {
         }
         ]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title='Cart' />
+            {/* <HeaderBar title='Cart' /> */}
             {
               CartList.length === 0 ? <EmptyListAnimation title='Empty Cart List' /> : (
                 <View style={styles.ListItemContainer}>
@@ -80,7 +81,7 @@ const CartScreen = ({ navigation, route }: any) => {
           </View>
         </View>
       </ScrollView>
-      <View style={{marginBottom: tabBarHeight}}>
+      <View style={{ marginBottom: tabBarHeight }}>
         {
           CartList.length != 0 ?
             <PaymentFooter

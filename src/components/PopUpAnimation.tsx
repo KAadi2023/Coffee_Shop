@@ -10,7 +10,7 @@ interface PopUpAnimationProps {
 
 const PopUpAnimation: React.FC<PopUpAnimationProps> = ({style, source}) => {
   return (
-    <View style={style.LottieAnimationContainer}>
+    <View style={styles.LottieAnimationContainer}>
       <LottieView 
         style={style}
         source={source}

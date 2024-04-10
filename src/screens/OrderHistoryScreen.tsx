@@ -12,15 +12,28 @@ const OrderHistoryScreen = ({ navigation }: any) => {
   const tabBarHeight = useBottomTabBarHeight();
   const OrderHistoryList = useStore((state: any) => state.OrderHistoryList)
   const [showAnimation, setShowAnimation] = useState(false)
-  console.log('Order Histoty List', OrderHistoryList.length)
+
+  const navigationHandler = ({ index, id, type }: any) => {
+    navigation.push("Details", {
+      index, id, type
+    })
+  }
+
+  const buttonPressHandler = () => {
+    setShowAnimation(true)
+    setTimeout(() => {
+      setShowAnimation(false)
+    }, 2000);
+  }
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
+      <HeaderBar title='Order History' />
       {
         showAnimation ? (
           <PopUpAnimation
             style={styles.LottieAnimation}
-            source={require('../lottie/successful.json')}
+            source={require('../lottie/download.json')}
           />
         ) : (<></>)
       }
@@ -33,18 +46,18 @@ const OrderHistoryScreen = ({ navigation }: any) => {
         }
         ]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title='Order History' />
+            {/* <HeaderBar title='Order History' /> */}
             {
               OrderHistoryList.length === 0 ? <EmptyListAnimation title='No Order List' /> : (
                 <View style={styles.ListItemContainer}>
                   {
                     OrderHistoryList.map((data: any, index: any) => (
-                      <OrderHistoryCard 
-                      key={index.toString()} 
-                      navigationHandler={()=>{}} 
-                      CartListPrice={data.CartListPrice}
-                      CartItems={data.CartItems}
-                      OrderDate={data.OrderDate}
+                      <OrderHistoryCard
+                        key={index.toString()}
+                        navigationHandler={navigationHandler}
+                        CartListPrice={data.CartListPrice}
+                        CartList={data.CartList}
+                        OrderDate={data.OrderDate}
                       />
                     ))
                   }
@@ -54,6 +67,17 @@ const OrderHistoryScreen = ({ navigation }: any) => {
           </View>
         </View>
       </ScrollView>
+      {
+        OrderHistoryList.length > 0 ?
+          <TouchableOpacity
+            onPress={() => {
+              buttonPressHandler();
+            }}
+            style={[styles.DownloadButton, { marginBottom: tabBarHeight }]}
+          >
+            <Text style={styles.ButtonText}>Download</Text>
+          </TouchableOpacity> : <></>
+      }
     </View>
   )
 }
@@ -82,4 +106,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.space_20,
     gap: SPACING.space_30
   },
+  DownloadButton: {
+    width: '85%',
+    height: 50,
+    backgroundColor: COLORS.primaryOrangeHex,
+    borderRadius: SPACING.space_20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginBottom: SPACING.space_20,
+  },
+  ButtonText: {
+    color: COLORS.primaryWhiteHex,
+    fontWeight: 'bold',
+    fontSize: SPACING.space_20,
+  }
 })

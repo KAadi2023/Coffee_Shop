@@ -23,7 +23,8 @@ const FavoriteScreen = ({ navigation }: any) => {
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
-
+      
+      <HeaderBar title='Favourites' />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.ScrollViewFlex} >
@@ -33,7 +34,7 @@ const FavoriteScreen = ({ navigation }: any) => {
         }
         ]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title='Favourites' />
+            {/* <HeaderBar title='Favourites' /> */}
             {
               FavotitesList.length === 0 ? <EmptyListAnimation title='No Favourites' /> : (
                 <View style={styles.ListItemContainer}>

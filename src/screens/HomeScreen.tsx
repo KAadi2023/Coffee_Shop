@@ -104,12 +104,15 @@ const HomeScreen = ({ navigation }: any) => {
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
+      
+      {/* App Header */}
+      <HeaderBar />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.ScrollViewFlex}
       >
         {/* App Header */}
-        <HeaderBar />
+        {/* <HeaderBar /> */}
 
         <Text style={styles.ScreenTitle}>Find the best{'\n'}Coffee for you</Text>
 
